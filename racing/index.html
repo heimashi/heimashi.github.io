@@ -281,14 +281,14 @@
             var result = resp.result;
             loading.close();
             if (result === 'null') {
-                that.$message("获取套个圈NAS池失败");
+                that.$message("获取极速赛车NAS池失败");
                 return;
             }
             result = JSON.parse(result);
             that.tgqCount = result
         }, function (err) {
             loading.close();
-            that.$message("获取套个圈Nas池失败");
+            that.$message("获取极速赛车Nas池失败");
             console.log("error :" + err.message);
         })
       }
@@ -306,14 +306,14 @@
             var result = resp.result;
             loading.close();
             if (result === 'null') {
-                that.$message("获取套个圈NAS累积奖金池失败");
+                that.$message("获取极速赛车NAS累积奖金池失败");
                 return;
             }
             result = JSON.parse(result);
             that.bonusCount = result
         }, function (err) {
             loading.close();
-            that.$message("获取套个圈Nas累积奖金池失败");
+            that.$message("获取极速赛车Nas累积奖金池失败");
             console.log("error :" + err.message);
         })
       }
