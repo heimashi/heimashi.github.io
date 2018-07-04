@@ -38,30 +38,20 @@
       style="display: flex; flex-direction: row; justify-content:flex-end;">
           <el-menu-item index="1" style="width: 100px">首页</el-menu-item>
           <el-menu-item index="2">游戏介绍</el-menu-item>
-          <el-menu-item index="3">m免费领取Nas</el-menu-item>
-          <el-menu-item index="4">赞助套个圈</el-menu-item>
-          <el-menu-item index="5">联系我们</el-menu-item>
+          <el-menu-item index="3">领取Nas</el-menu-item>
+          <el-menu-item index="4">赞助</el-menu-item>
+          <el-menu-item index="5">联系</el-menu-item>
     
     </el-menu>
 
-    <div>
-        <img src="./res/imgs/tgq.png" width="250" height="130" style="position: absolute;left: 60px;top: 180px;"/>
-        <img src="./res/imgs/1024_500_CN.jpg" width="360" height="140" style="position: absolute;left: 30px;bottom: 20px;"/>
-        <img src="./res/imgs/1024_500.jpg" width="360" height="140" style="position: absolute;right: 30px;bottom: 20px;"/>
-        <p></p>
-      </div>
+    
     
     <div id="app-count" v-show="app_game" style="float:right;">
-        <el-card shadow="always" style="margin-top: 50px; margin-right:30px;width: 360px; height: 400px">
+        <el-card shadow="always" style="margin-top: 90px; margin-right:20px;width: 360px; height: 350px">
             <div style="display: flex; flex-direction: column; align-items: flex-start">
                 <el-button type="text" style="font-size: 25px; color: black;">套个圈-区块链游戏</el-button>
-                <p>区块链游戏规则：</p>
-                    <div style="display: flex; flex-direction: column; align-items: flex-start;font-size: 12px;" align="left">
-                      <div>1、玩家通过玩套个圈游戏获得游戏初始得分</div>
-                      <div>2、然后花费0.01NAS将初始得分写入区块链中，在链中会生成一个1～1000的随机数，初始得分加上此随机数就是游戏的最终得分</div>
-                      <div>3、最终得分根据分数的末尾0的个数得到对应的奖励</div>
-                    </div>
-                
+                <p style="font-size: 15px; color: #606266;">套个圈区块链游戏是一款基于<a href="https://nebulas.io/">星云链</a>公链的开源的公平的博弈类区块链小游戏。游戏完全开源，是休闲类公平博弈游戏，开发者不赚钱任何费用</p>
+
                 <el-card shadow="always" style="margin-top: 30px; height: 135px; width: 320px;display: flex; flex-direction: column; align-items: flex-start; ">
                   <div align="left">
                     <el-button type="text" style="font-size: 14px; padding: 5px; color: #606266">NAS仓库池：{{tgqCount}}</el-button>
@@ -89,7 +79,7 @@
     
   
     <div id="app-left" v-show="app_tips" style="display: flex; flex-direction: row; justify-content:center;">
-        <el-card shadow="always" style="margin: 50px; width: 400px; height: 650px">
+        <el-card shadow="always" style="margin: 5px; width: 400px; height: 580px">
             <div style="display: flex; flex-direction: column; align-items: flex-start">
                 <el-button type="text" style="font-size: 25px; color: black;">套个圈 玩法说明</el-button>
                 <el-card shadow="always" style="margin-top: 30px; height: 460px; width: 360px;display: flex; flex-direction: column; align-items: flex-start; ">
@@ -98,7 +88,7 @@
 
                     <p>游戏规则如下所示：</p>
                     <div style="display: flex; flex-direction: column; align-items: flex-start;font-size: 12px;" align="left">
-                      <div>1、玩家通过玩套个圈游戏获得游戏初始得分</div>
+                      <div>1、游戏中两个方框会放大缩小旋转，当方框重回的时候点按屏幕来得分，玩家通过玩套个圈游戏获得游戏初始得分</div>
                       <div>2、然后花费0.01NAS将初始得分写入区块链中，在链中会生成一个1～1000的随机数，初始得分加上此随机数就是游戏的最终得分</div>
                       <div>3、最终得分根据分数的末尾0的个数得到对应的奖励</div>
                       <div style="font-size: 10px; color: #909399; margin-top: 20px">
@@ -112,22 +102,13 @@
                   </div>  
                     
                 </el-card>
-                <div style="margin-top: 20px">联系我们: ssunrisew@gmail.com</div>
-                <div>更多游戏: <a href="https://heimashi.github.io/racing/index.html">极速赛车-区块链游戏</a></div>
             </div>
     </div>
-    <div id="app-right" v-show="app_handle" style="display: flex; flex-direction: row; justify-content:center;">
-        <el-card shadow="always" style="margin: 50px; width: 400px; height: 650px">
+    <div id="app-right" v-show="app_handle1" style="display: flex; flex-direction: row; justify-content:center;">
+        <el-card shadow="always" style="margin: 5px; width: 400px; height: 450px">
             <div style="display: flex; flex-direction: column; align-items: flex-start">
                 <el-button type="text" style="font-size: 25px; color: black;">套个圈 操作区</el-button>
-                <el-card shadow="always" style="margin-top: 30px; height: 460px; width: 360px;display: flex; flex-direction: column; align-items: flex-start; ">
-                  <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 70px">
-                    <el-button type="text" style="font-size: 18px; color:#000000;">捐赠到NAS仓库池:</el-button>
-                    <div style="margin-left: 0px">
-                      <el-input v-model="inputDonate" placeholder="捐赠NAS数量"  style="width: 120px;"></el-input>
-                      <el-button @click="donateClick" type="primary" size="medium" style="background-color: black">捐赠</el-button>
-                    </div>
-                  </div>
+                <el-card shadow="always" style="margin-top: 30px; height: 300px; width: 360px;display: flex; flex-direction: column; align-items: flex-start; ">
                   <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 70px">
                     <div>
                         <el-button type="text" style="font-size: 18px; color:#000000;">免费领取NAS:</el-button>
@@ -142,7 +123,33 @@
                 </el-card>
             </div>
         </el-card>
-        
+    </div>
+    <div id="app-right" v-show="app_handle2" style="display: flex; flex-direction: row; justify-content:center;">
+        <el-card shadow="always" style="margin: 5px; width: 400px; height: 450px">
+            <div style="display: flex; flex-direction: column; align-items: flex-start">
+                <el-button type="text" style="font-size: 25px; color: black;">套个圈 操作区</el-button>
+                <el-card shadow="always" style="margin-top: 30px; height: 300px; width: 360px;display: flex; flex-direction: column; align-items: flex-start; ">
+                  <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 70px">
+                    <el-button type="text" style="font-size: 18px; color:#000000;">捐赠到NAS仓库池:</el-button>
+                    <div style="margin-left: 0px">
+                      <el-input v-model="inputDonate" placeholder="捐赠NAS数量"  style="width: 120px;"></el-input>
+                      <el-button @click="donateClick" type="primary" size="medium" style="background-color: black">捐赠</el-button>
+                    </div>
+                  </div>
+                </el-card>
+            </div>
+        </el-card>
+    </div>
+    <div id="app-right" v-show="app_mine" style="display: flex; flex-direction: row; justify-content:center;">
+        <el-card shadow="always" style="margin: 10px; width: 400px; height: 450px;">
+            <el-button type="text" style="font-size: 25px; color: black;">套个圈 联系我们</el-button>  
+          <el-card shadow="always" style="margin-top: 50px; height: 250px; width: 330px;display: flex; flex-direction: column; align-items: flex-start; " align="left">
+              
+            <div style="margin-top: 60px;">EMAIL: ssunrisew@gmail.com</div>
+            <div>GITHUB: <a href="https://github.com/heimashi">heimashi</a></div>
+            <div>MORE GAMES: <a href="https://heimashi.github.io/racing/index.html">极速赛车-区块链游戏</a></div>
+            </el-card>
+        </el-card>
     </div>
   </div>
   
@@ -151,8 +158,9 @@
 <script>
       "use strict";
       if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-        //alert('手机端')
+        
       }else{
+        //alert('PC端')
         window.location.href = "./index.html"
       }
       var dappContactAddress = "n1mCm5oHc7FXYasRDiHiNRsDHPKejRu2zse";
@@ -316,17 +324,17 @@
       }
 
       function callGetTgqPool(that){
-        const loading = that.$loading({
-          lock: true,
-          text: 'Loading',
-          spinner: 'el-icon-loading',
-          background: 'rgba(0, 0, 0, 0.7)'
-        });
+        // const loading = that.$loading({
+        //   lock: true,
+        //   text: 'Loading',
+        //   spinner: 'el-icon-loading',
+        //   background: 'rgba(0, 0, 0, 0.7)'
+        // });
         
         var callArgs = "[]";
         callNeb("getTgqPool", callArgs, function (resp) {
             var result = resp.result;
-            loading.close();
+            //loading.close();
             if (result === 'null') {
                 that.$message("获取套个圈NAS池失败");
                 return;
@@ -334,24 +342,24 @@
             result = JSON.parse(result);
             that.tgqCount = result
         }, function (err) {
-            loading.close();
+            //loading.close();
             that.$message("获取套个圈Nas池失败");
             console.log("error :" + err.message);
         })
       }
 
       function callGetBonusPool(that){
-        const loading = that.$loading({
-          lock: true,
-          text: 'Loading',
-          spinner: 'el-icon-loading',
-          background: 'rgba(0, 0, 0, 0.7)'
-        });
+        // const loading = that.$loading({
+        //   lock: true,
+        //   text: 'Loading',
+        //   spinner: 'el-icon-loading',
+        //   background: 'rgba(0, 0, 0, 0.7)'
+        // });
         
         var callArgs = "[]";
         callNeb("getBonusPoll", callArgs, function (resp) {
             var result = resp.result;
-            loading.close();
+            //loading.close();
             if (result === 'null') {
                 that.$message("获取套个圈NAS累积奖金池失败");
                 return;
@@ -359,7 +367,7 @@
             result = JSON.parse(result);
             that.bonusCount = result
         }, function (err) {
-            loading.close();
+            //loading.close();
             that.$message("获取套个圈Nas累积奖金池失败");
             console.log("error :" + err.message);
         })
@@ -377,8 +385,11 @@
         inputDonate: "",
         bonusCount : "加载中...",
         tgqCount : "加载中...",
+        descBtn : "游戏规则详细说明",
         app_tips : false,
-        app_handle : false,
+        app_handle1 : false,
+        app_handle2 : false,
+        app_mine : false,
         app_game : true
        }
     },
@@ -396,26 +407,50 @@
         claimNas(this)
       },
       handleSelect(key, keyPath) {
-        
         if(key==1){
+          this.descBtn  = "游戏规则详细说明"
           this.app_tips = false
-          this.app_handle = false
+          this.app_handle1 = false
+          this.app_handle2 = false
           this.app_game = true
+          this.app_mine = false
           console.log(key, keyPath);
         }else if(key==2){
           console.log("--",key, keyPath,this.app_tips);
-          this.app_game = false
+          this.descBtn  = "返 回 游 戏"
           this.app_tips = true
-          this.app_handle = false
+          this.app_handle1 = false
+          this.app_handle2 = false
+          this.app_game = false
+          this.app_mine = false
         }else if(key==="3"){
+          this.descBtn  = "返 回 游 戏"
           this.app_tips = false
-          this.app_handle = true
+          this.app_handle1 = true
+          this.app_handle2 = false
           this.app_game = false
+          this.app_mine = false
         }else if(key==="4"){
+          this.descBtn  = "返 回 游 戏"
           this.app_tips = false
-          this.app_handle = true
+          this.app_handle1 = false
+          this.app_handle2 = true
           this.app_game = false
+          this.app_mine = false
         }else if(key==="5"){
+          this.descBtn  = "返 回 游 戏"
+          this.app_tips = false
+          this.app_handle1 = false
+          this.app_handle2 = false
+          this.app_game = false
+          this.app_mine = true
+        }
+      },
+      clickDesc(){
+        if(this.app_game){
+          this.handleSelect(2)
+        }else{
+          this.handleSelect(1)
           
         }
       }
