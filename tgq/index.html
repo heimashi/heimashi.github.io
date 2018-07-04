@@ -27,7 +27,67 @@
 </head>
 <body style="background-color:#EBEEF5">
   <div id="app" >
-    <div id="app-left" style="float: left;">
+      <el-menu
+      :default-active="activeIndex"
+      class="el-menu-demo"
+      mode="horizontal"
+      @select="handleSelect"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+      style="display: flex; flex-direction: row; justify-content:flex-end;">
+          <el-menu-item index="1" style="width: 100px">首页</el-menu-item>
+          <el-menu-item index="2">游戏介绍</el-menu-item>
+          <el-menu-item index="3">免费领取Nas</el-menu-item>
+          <el-menu-item index="4">赞助套个圈</el-menu-item>
+          <el-menu-item index="5">联系我们</el-menu-item>
+    
+    </el-menu>
+
+    <div>
+        <img src="./res/imgs/tgq.png" width="250" height="130" style="position: absolute;left: 60px;top: 180px;"/>
+        <img src="./res/imgs/1024_500_CN.jpg" width="360" height="160" style="position: absolute;left: 30px;bottom: 20px;"/>
+        <img src="./res/imgs/1024_500.jpg" width="360" height="160" style="position: absolute;right: 30px;bottom: 20px;"/>
+    </div>
+    
+    <div id="app-count" v-show="app_game" style="float:right;">
+        <el-card shadow="always" style="margin-top: 50px; margin-right:30px;width: 360px; height: 400px">
+            <div style="display: flex; flex-direction: column; align-items: flex-start">
+                <el-button type="text" style="font-size: 25px; color: black;">套个圈-区块链游戏</el-button>
+                <p>游戏规则如下所示：</p>
+                    <div style="display: flex; flex-direction: column; align-items: flex-start;font-size: 12px;" align="left">
+                      <div>1、玩家通过玩套个圈游戏获得游戏初始得分</div>
+                      <div>2、然后花费0.01NAS将初始得分写入区块链中，在链中会生成一个1～1000的随机数，初始得分加上此随机数就是游戏的最终得分</div>
+                      <div>3、最终得分根据分数的末尾0的个数得到对应的奖励</div>
+                    </div>
+                
+                <el-card shadow="always" style="margin-top: 30px; height: 135px; width: 320px;display: flex; flex-direction: column; align-items: flex-start; ">
+                  <div align="left">
+                    <el-button type="text" style="font-size: 14px; padding: 5px; color: #606266">NAS仓库池：{{tgqCount}}</el-button>
+                    <el-button @click="getTgqPool" icon="el-icon-refresh" type="primary" size="mini" style="background-color: black" circle></el-button>
+                  </div>
+                  <div align="left">
+                    <el-button type="text" style="font-size: 14px; padding: 5px; color: #606266">NAS累积奖金池：{{bonusCount}}</el-button>
+                    <el-button @click="getBonusPool" icon="el-icon-refresh" type="primary" size="mini" style="background-color: black" circle></el-button>
+                  </div>
+                </el-card>
+            </div>
+        </el-card>
+        
+    </div>
+
+    <div id="GameDiv" style="width:360px; height: 648px; float: center; margin-top: 10px" v-show="app_game">
+      <canvas id="GameCanvas" width="360" height="648"></canvas>
+      <div id="splash">
+        <div class="progress-bar stripes">
+           <span style="width: 0%"></span>
+        </div>
+     </div>
+    </div>
+
+    
+  
+    <div id="app-left" v-show="app_tips" style="display: flex; flex-direction: row; justify-content:center;">
         <el-card shadow="always" style="margin: 50px; width: 400px; height: 650px">
             <div style="display: flex; flex-direction: column; align-items: flex-start">
                 <el-button type="text" style="font-size: 25px; color: black;">套个圈 玩法说明</el-button>
@@ -55,19 +115,11 @@
                 <div>更多游戏: <a href="https://heimashi.github.io/racing/index.html">极速赛车-区块链游戏</a></div>
             </div>
     </div>
-    <div id="app-right" style="float: right;">
+    <div id="app-right" v-show="app_handle" style="display: flex; flex-direction: row; justify-content:center;">
         <el-card shadow="always" style="margin: 50px; width: 400px; height: 650px">
             <div style="display: flex; flex-direction: column; align-items: flex-start">
                 <el-button type="text" style="font-size: 25px; color: black;">套个圈 操作区</el-button>
                 <el-card shadow="always" style="margin-top: 30px; height: 460px; width: 360px;display: flex; flex-direction: column; align-items: flex-start; ">
-                  <div align="left">
-                    <el-button type="text" style="font-size: 16px; padding: 5px; color: #606266">NAS仓库池：{{tgqCount}}</el-button>
-                    <el-button @click="getTgqPool" icon="el-icon-refresh" type="primary" size="mini" style="background-color: black" circle></el-button>
-                  </div>
-                  <div align="left">
-                    <el-button type="text" style="font-size: 16px; padding: 5px; color: #606266">NAS累积奖金池：{{bonusCount}}</el-button>
-                    <el-button @click="getBonusPool" icon="el-icon-refresh" type="primary" size="mini" style="background-color: black" circle></el-button>
-                  </div>
                   <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 70px">
                     <el-button type="text" style="font-size: 18px; color:#000000;">捐赠到NAS仓库池:</el-button>
                     <div style="margin-left: 0px">
@@ -92,15 +144,6 @@
         
     </div>
   </div>
-  <div id="GameDiv" style="width:400px; height: 720px; float: center; margin-top: 30px">
-    <canvas id="GameCanvas" width="400" height="720"></canvas>
-    <div id="splash">
-      <div class="progress-bar stripes">
-        <span style="width: 0%"></span>
-      </div>
-    </div>
-  </div>
-  
   
 <script src="src/settings.js" charset="utf-8"></script>
 <script src="main.js" charset="utf-8"></script>
@@ -324,9 +367,13 @@
     data: function() {
       return { 
         visible: false,
+        activeIndex: '1',
         inputDonate: "",
         bonusCount : "加载中...",
         tgqCount : "加载中...",
+        app_tips : false,
+        app_handle : false,
+        app_game : true
        }
     },
     methods: {
@@ -341,6 +388,30 @@
       },
       claimClick(){
         claimNas(this)
+      },
+      handleSelect(key, keyPath) {
+        
+        if(key==1){
+          this.app_tips = false
+          this.app_handle = false
+          this.app_game = true
+          console.log(key, keyPath);
+        }else if(key==2){
+          console.log("--",key, keyPath,this.app_tips);
+          this.app_game = false
+          this.app_tips = true
+          this.app_handle = false
+        }else if(key==="3"){
+          this.app_tips = false
+          this.app_handle = true
+          this.app_game = false
+        }else if(key==="4"){
+          this.app_tips = false
+          this.app_handle = true
+          this.app_game = false
+        }else if(key==="5"){
+          
+        }
       }
     },
     mounted() {
