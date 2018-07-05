@@ -45,18 +45,19 @@
     </el-menu>
 
     <div>
-        <img src="./res/imgs/tgq.png" width="250" height="130" style="position: absolute;left: 70px;top: 100px;"/>
-        <div style="position: absolute;left: 30px;bottom: 240px;height: 200px; width:360px" >
-            
+        
+        <img src="./res/imgs/tgq.png" width="250" height="130" style="position: absolute;left: 70px;top: 140px;"/>
+        <div style="position: absolute;left: 30px;bottom: 240px;height: 280px; width:360px" >
             <el-steps direction="vertical" v-show="app_game" >
-              <el-step title="步骤 1" description="游戏中两个方框会放大缩小旋转，当方框重回的时候点按屏幕来得分"></el-step>
-              <el-step title="步骤 2" description="获得分数后，花费0.01NAS将初始得分写入区块链中来获得区块链中的得分"></el-step>
-              <el-step title="步骤 3" description="最终根据区块链中的得分末尾0的个数得到对应的奖励"></el-step>
+              <el-step title="步骤 1" description="点击游戏中开始按钮进入游戏，游戏中两个方框会放大、缩小、旋转"></el-step>
+              <el-step title="步骤 2" description="当两方框重回的时候点按屏幕，命中会得分，继续下一次变幻；未命中则本轮结束"></el-step>
+              <el-step title="步骤 3" description="获得分数后，花费0.01NAS将初始得分写入区块链中来获得区块链中的得分"></el-step>
+              <el-step title="步骤 4" description="最终根据区块链中的得分末尾0的个数得到对应的奖励"></el-step>
             </el-steps>
             <el-button @click="clickDesc()" style="margin-top: 10px">{{descBtn}}</el-button>
           </div>
-        <img src="./res/imgs/1024_500_CN.jpg" width="360" height="140" style="position: absolute;left: 20px;bottom: 30px;"/>
-        <p style="position: absolute;left: 20px;bottom: 0px;font-size: 10px; ">@套个圈-基于星云链的区块链游戏</p>
+        <!-- <img src="./res/imgs/1024_500_CN.jpg" width="360" height="140" style="position: absolute;left: 20px;bottom: 30px;"/>
+        <p style="position: absolute;left: 20px;bottom: 0px;font-size: 10px; ">@套个圈-基于星云链的区块链游戏</p> -->
         <img src="./res/imgs/1024_500.jpg" width="360" height="140" style="position: absolute;right: 20px;bottom: 30px;"/>
         <p style="position: absolute;right: 20px;bottom: 0px;font-size: 10px; ">Copyright ©2018 Heimashi</p>
       </div>
@@ -477,6 +478,23 @@
   })
 </script>
 
+<style>
+    .el-carousel__item h3 {
+      color: #475669;
+      font-size: 14px;
+      opacity: 0.75;
+      line-height: 200px;
+      margin: 0;
+    }
+    
+    .el-carousel__item:nth-child(2n) {
+      background-color: #99a9bf;
+    }
+    
+    .el-carousel__item:nth-child(2n+1) {
+      background-color: #d3dce6;
+    }
+  </style>
 
 
 </body>
